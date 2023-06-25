@@ -14,7 +14,7 @@ const fetechData = async () => {
 const addCard = (cardInfo, index) => {
   const row = document.querySelector(".row");
   const column = document.createElement("div");
-  column.className = "col-6 col-md-4 ml-6 mt-3";
+  column.className = "col-6 col-md-4  col-sm-6 col-md-4 col-lg-3 ml-4 mt-4 ";
   column.innerHTML = `
     <div class="card " style="width: 18rem; position: relative;">
      <div class="badge">
@@ -80,15 +80,17 @@ document.querySelector(".submit").addEventListener("click", async () => {
   let counter = 0;
   const rowSpace = document.querySelector(".row");
   details.data.map((info) => {
+    console.log(info.first_name,searchName)
     if (info.first_name.toLowerCase() == searchName.toLowerCase()) {
       rowSpace.innerHTML = ``;
       addCard(info, 0);
-     counter=0;
+      counter=-1*(details.data.length);
     }
     counter++;
   });
   console.log(counter, details.data.length);
   if (counter >= details.data.length) {
+   
     rowSpace.innerHTML = `
     <p class="display-4 mt-2" >No Empolyee Found.Please check the name again</p>`;
     setTimeout(() => {
